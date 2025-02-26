@@ -1,0 +1,15 @@
+{
+  "manifest_version": 3,
+  "name": "Yacht Club Captain",
+  "version": "1.0",
+  "description": "Reads trade data from one tab and inputs it into another.",
+  "permissions": ["scripting", "activeTab", "tabs"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+  },
+  "host_permissions": [
+    "https://*/*"
+  ]
+}
