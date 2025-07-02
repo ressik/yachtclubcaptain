@@ -38,6 +38,9 @@ function extractTradeData() {
     let symbol = iframe.querySelector(
         "#placeorderfidelity_RadAjaxPanel3 > div:nth-child(6) > div > div > div:nth-child(4) > div > div > div"
     ).textContent;
+    let account = iframe.querySelector(
+        "#placeorderfidelity_RadAjaxPanel3 > div:nth-child(6) > div > div > div:nth-child(2) > div > div > div > span"
+    ).textContent;
 
     let resp = {
         buyShares,
@@ -45,9 +48,10 @@ function extractTradeData() {
         buyPrice,
         sellPrice,
         symbol,
+        account,
     };
 
-    console.log(resp);
+    console.log("Trade Data", resp);
     return resp;
 }
 
@@ -160,29 +164,30 @@ function inputTradeData(data) {
 					setTimeout(() => {
 						// Input trade data into the fields
 						const quantityInput1 = document.querySelectorAll(
-							'#quantity-element > quantity-field > div > pvd3-ett-input > s-root > div > input'
+							'#quantity-element > quantity-field > div > pvd-ett-input > s-root > div > input'
 						)[0];
 						const limitPriceInput = document.querySelectorAll(
-							'#limit-price-element > limit-price-field > pvd3-ett-input > s-root > div > input'
+							'#limit-price-element > limit-price-field > pvd-ett-input > s-root > div > input'
 						)[0];
 						const timeInForceSelect1 = document.querySelectorAll(
-							'#time-in-force-element > time-in-force-field > pvd3-ett-select > div > div > select'
+							'#time-in-force-element > time-in-force-field > pvd-ett-select > div > div > select'
 						)[0];
 
 						const quantityInput2 = document.querySelectorAll(
-							'#quantity-element > quantity-field > div > pvd3-ett-input > s-root > div > input'
+							'#quantity-element > quantity-field > div > pvd-ett-input > s-root > div > input'
 						)[1];
 						const orderTypeSelect2 = document.querySelectorAll(
-							'#order-type-element > order-type-field > pvd3-ett-select > div > div > select'
+							'#order-type-element > order-type-field > pvd-ett-select > div > div > select'
 						)[1];
 						const stopPriceInput2 = document.querySelectorAll(
-							'#limit-price-element > limit-price-field > pvd3-ett-input > s-root > div > input'
+							'#limit-price-element > limit-price-field > pvd-ett-input > s-root > div > input'
 						)[1];
 						const timeInForceSelect2 = document.querySelectorAll(
-							'#time-in-force-element > time-in-force-field > pvd3-ett-select > div > div > select'
+							'#time-in-force-element > time-in-force-field > pvd-ett-select > div > div > select'
 						)[1];
 
 						simulateTyping(quantityInput1, data.buyShares, false);
+                        console.log("Inputing Buy Shares", data.buyShares);
 						simulateTyping(limitPriceInput, data.buyPrice, false);
 						simulateTyping(timeInForceSelect1, 'G', false);
 
