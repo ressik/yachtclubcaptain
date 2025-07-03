@@ -136,9 +136,20 @@ function inputTradeData(data) {
         typeCharacter(); // Start typing
     }
 
-    console.log('Called with', data);
-    document.querySelector('#dest-dropdownlist-button-trade').click();
+    //select the account
+    document.querySelector('#dest-acct-dropdown').click();
+    let accountOption;
+    document.querySelectorAll('#ett-acct-sel-list > ul > li > button').forEach(function(currentNode, index, nodeList){
+        if(currentNode.innerText.trim() == data.account.trim()){
+            let event = new MouseEvent('mousedown', { bubbles: true });
+            currentNode.dispatchEvent(event); // Simulate mouse down
+            currentNode.dispatchEvent(new MouseEvent('mouseup', { bubbles: true }));
+            currentNode.dispatchEvent(new MouseEvent('click', { bubbles: true }));
+        }
+    });
 
+
+    document.querySelector('#dest-dropdownlist-button-trade').click();
     setTimeout(() => {
         let tradeOption = document.querySelector('#Trade6'); // "Conditional"
         if (tradeOption) {
